@@ -9,7 +9,7 @@ A sphinx extension for making table from Excel file.
   - Supports xlsx file
 
 - Supports merged cell
-- Supports 日本語
+- Supports Japanese
 
 This extension **generates a grid table string internally** from Excel file.
 
@@ -23,11 +23,11 @@ reStructuredText:
 
 Excel file:
 
-.. figure:: sample-excel.png
+.. image:: https://raw.githubusercontent.com/kkAyataka/sphinxcontrib-xlsxtable/master/sample-excel.png
 
 Rendered HTML:
 
-.. figure:: sample-rendering.png
+.. image:: https://raw.githubusercontent.com/kkAyataka/sphinxcontrib-xlsxtable/master/sample-rendering.png
 
 
 LICENSE

@@ -1,2 +1,9 @@
 # Python
+.venv
 __pycache__
+
+# PyPI
+scripts/pypi-env.sh
+build
+dist
+sphinxcontrib_xlsxtable.egg-info

@@ -13,7 +13,30 @@ A sphinx extension for making table from Excel file.
 
 This extension **generates a grid table string internally** from Excel file.
 
-reStructuredText:
+
+Install and Set up
+==================
+
+Install from PyPI.
+
+.. code-block::
+
+   $ pip install sphinxcontrib-xlsxtable
+
+Configure conf.py
+
+.. code-block:: python
+
+   # conf.py
+   extensions = [
+    'sphinxcontrib.xlsxtable',
+   ]
+
+
+Usage
+=====
+
+reStructuredText directive:
 
 .. code-block:: rst
 

@@ -7,7 +7,7 @@ from openpyxl import Workbook
 from openpyxl import load_workbook
 from openpyxl.cell.cell import MergedCell
 
-from excel2gridtable import gen_reST_grid_table_lines
+from .xlsx2gridtable import gen_reST_grid_table_lines
 
 class XlsxTable(directives.tables.Table):
     has_content = True

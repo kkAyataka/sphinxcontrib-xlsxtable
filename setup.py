@@ -8,7 +8,7 @@ with open("README.rst", "r") as fh:
 
 setup(
     name='sphinxcontrib-xlsxtable',
-    version='0.1.7',
+    version='0.1.8',
     url='https://github.com/kkAyataka/sphinxcontrib-xlsxtable',
     download_url='http://pypi.python.org/pypi/sphinxcontrib-xlsxtable',
     license='MIT',
@@ -35,7 +35,7 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     install_requires=[
-        'sphinx >= 2.0.0',
+        'Sphinx >= 2.0.0',
         'openpyxl >= 3.0.0',
     ],
     namespace_packages=['sphinxcontrib'],

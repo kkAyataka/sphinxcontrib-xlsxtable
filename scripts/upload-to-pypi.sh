@@ -13,7 +13,7 @@ cd ../
 ./scripts/build.sh
 
 # upload
-if [ -d ~/.pypirc ]; then
+if [ ${PYPI_TEST} == 1 ]; then
   twine upload -u ${PYPI_USER} -p ${PYPI_PASS} --repository-url https://test.pypi.org/legacy/ dist/*
 else
   twine upload -u ${PYPI_USER} -p ${PYPI_PASS} dist/*

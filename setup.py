@@ -26,6 +26,7 @@ setup(
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
+        'Programming Language :: Python :: 3.0',
         'Framework :: Sphinx :: Extension',
         'Topic :: Documentation',
         'Topic :: Utilities',
@@ -34,8 +35,8 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     install_requires=[
-        'Sphinx',
-        'openpyxl'
+        'sphinx >= 2.0.0',
+        'openpyxl >= 3.0.0',
     ],
     namespace_packages=['sphinxcontrib'],
 )

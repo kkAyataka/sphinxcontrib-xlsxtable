@@ -7,3 +7,6 @@ scripts/pypi-env.sh
 build
 dist
 sphinxcontrib_xlsxtable.egg-info
+
+# Sphinx
+test/_build

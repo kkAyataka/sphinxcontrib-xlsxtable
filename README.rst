@@ -29,7 +29,7 @@ Configure conf.py
 
    # conf.py
    extensions = [
-    'sphinxcontrib.xlsxtable',
+       'sphinxcontrib.xlsxtable',
    ]
 
 

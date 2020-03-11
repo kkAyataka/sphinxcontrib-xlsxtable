@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-0.1.8 (2020-03-XX)
+0.1.8 (2020-03-11)
 ------------------
 
 - Fix handling of the east asian width "A" (#1)

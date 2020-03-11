@@ -9,6 +9,7 @@ fi
 cd "`dirname "${0}"`"
 cd ../
 
+# build
 ./scripts/build.sh
 
 # upload

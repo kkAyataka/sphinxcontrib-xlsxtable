@@ -7,7 +7,7 @@ from openpyxl.cell.cell import MergedCell
 def get_string_width(text: str):
     width = 0
     for t in text:
-        if unicodedata.east_asian_width(t) in 'FWA':
+        if unicodedata.east_asian_width(t) in 'FW':
             width += 2
         else:
             width += 1

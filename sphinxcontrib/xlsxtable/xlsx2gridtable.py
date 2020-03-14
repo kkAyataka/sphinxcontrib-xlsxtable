@@ -145,12 +145,17 @@ def gen_reST_grid_table_lines(filename, header_rows, sheetname=None):
     grid_table_lines.append(get_rule(cols))
     return grid_table_lines
 
-def draw_reST_grid_table(filename, header_rows):
-    lines = gen_reST_grid_table_lines(filename, header_rows)
+def draw_reST_grid_table(filename, header_rows, sheet):
+    lines = gen_reST_grid_table_lines(filename, header_rows, sheet)
     for l in lines:
         print(l)
 
 if __name__ == '__main__':
-    filename = 'sample.xlsx'
-    header_rows = 1
-    draw_reST_grid_table(filename, header_rows)
+    p = argparse.ArgumentParser(description='Grid Table String Generator')
+    p.add_argument('--hrows', type=int, help='Header rows')
+    p.add_argument('--sheet', type=str, help='Target sheet name')
+    p.add_argument('file', type=str, help='Target Excel file path')
+
+    args = p.parse_args()
+
+    draw_reST_grid_table(args.file, args.hrows, args.sheet)

@@ -47,12 +47,12 @@ def get_padding(count, max_count):
         padding += ' '
     return padding
 
-def get_rule(colmuns, is_head=False):
+def get_rule(colmuns, is_head=False, is_end=False):
     line_str = ''
     for cell in colmuns:
         line_str += '+'
         for _ in range(cell.width + 2):
-            if cell.is_merged_top:
+            if cell.is_merged_top and not is_end:
                 line_str += ' '
             elif is_head:
                 line_str += '='
@@ -143,7 +143,7 @@ def gen_reST_grid_table_lines(filename, header_rows, sheetname=None):
 
             grid_table_lines.append(line_str)
 
-    grid_table_lines.append(get_rule(cols))
+    grid_table_lines.append(get_rule(cols, False, True))
     return grid_table_lines
 
 def draw_reST_grid_table(filename, header_rows, sheet):

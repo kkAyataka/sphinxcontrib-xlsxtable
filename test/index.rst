@@ -1,7 +1,6 @@
 Test / Sample for the sphinxcontrib-xlsxtable
 =============================================
 
-
 Sample
 ------
 
@@ -12,3 +11,16 @@ Sample
 
 .. xlsx-table:: Sample Table
    :file: _res/sample.xlsx
+   :header-rows: 1
+   :sheet: Sheet1
+
+
+Sample 2
+--------
+
+- Specifies sheet name
+- Has a merged cell at last row
+
+.. xlsx-table:: Sample Table
+   :file: _res/sample.xlsx
+   :sheet: Sheet2

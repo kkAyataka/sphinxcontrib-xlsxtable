@@ -9,7 +9,7 @@ from openpyxl.cell.cell import MergedCell
 
 from .xlsx2gridtable import gen_reST_grid_table_lines
 
-class XlsxTable(directives.tables.Table):
+class XlsxTable(directives.tables.RSTTable):
     has_content = True
 
     optional_arguments = 1
@@ -34,7 +34,7 @@ class XlsxTable(directives.tables.Table):
         filepath = os.path.normpath(os.path.join(rst_dir, filepath))
 
         lines = gen_reST_grid_table_lines(filepath, header_rows, sheet)
-        table = nodes.table(rawsource='\n'.join(lines))
+        node = nodes.Element(rawsource='\n'.join(lines))
 
         #for l in lines:
         #    print(l)
@@ -42,10 +42,12 @@ class XlsxTable(directives.tables.Table):
         title, messages = self.make_title()
 
         self.content = ViewList(lines, self.content.source)
-        self.state.nested_parse(self.content, self.content_offset, table)
-        table.children[0].insert(0, title)
-        table += messages
-        return [table]
+        self.state.nested_parse(self.content, self.content_offset, node)
+        table_node = node[0]
+        if title:
+            table_node.insert(0, title)
+
+        return [table_node] + messages
 
 def setup(app):
     app.add_directive("xlsx-table", XlsxTable)

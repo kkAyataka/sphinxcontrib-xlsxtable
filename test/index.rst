@@ -1,8 +1,8 @@
 Test / Sample for the sphinxcontrib-xlsxtable
 =============================================
 
-Sample
-------
+Sample 1
+--------
 
 - Includes vertical merged cell
 - Includes horizontal merged cell

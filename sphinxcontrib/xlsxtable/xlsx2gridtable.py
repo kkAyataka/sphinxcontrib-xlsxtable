@@ -143,7 +143,7 @@ def gen_reST_grid_table_lines(filename, header_rows, sheetname=None):
 
             grid_table_lines.append(line_str)
 
-    grid_table_lines.append(get_rule(cols, False, True))
+    grid_table_lines.append(get_rule(cols, is_end=True))
     return grid_table_lines
 
 def draw_reST_grid_table(filename, header_rows, sheet):

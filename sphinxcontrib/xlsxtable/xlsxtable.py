@@ -20,16 +20,10 @@ class XlsxTable(directives.tables.RSTTable):
     }
 
     def run(self):
-        filepath = ''
-        header_rows = 0
-        sheet = None
-        for k, v in self.options.items():
-            if k == 'file':
-                 filepath = v
-            elif k == 'header-rows':
-                 header_rows = v
-            elif k == 'sheet':
-                 sheet = v
+        filepath = self.options.get('file', '')
+        header_rows = self.options.get('header-rows', 0)
+        sheet = self.options.get('sheet', None)
+
         rst_dir = os.path.dirname(os.path.abspath(self.state.document.current_source))
         filepath = os.path.normpath(os.path.join(rst_dir, filepath))
 

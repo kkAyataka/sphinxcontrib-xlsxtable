@@ -6,6 +6,7 @@ Changelog
 ------------------
 
 - Fix handling of the merged cell at last row (#6)
+- Fix latexpf outputting (#9)
 
 
 0.1.8 (2020-03-11)

@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-0.1.9 (2020-03-XX)
+0.1.9 (2020-03-15)
 ------------------
 
 - Fix handling of the merged cell at last row (#6)

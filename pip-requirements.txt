@@ -2,3 +2,7 @@
 setuptools
 wheel
 twine
+
+# Sphinx
+Sphinx
+Pillow

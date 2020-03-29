@@ -4,6 +4,7 @@ Changelog
 0.1.10 (2020-XX-XX)
 -------------------
 
+- Adjust for calling from CLI ( #14 )
 - Implements ``start_row`` option ( #12 )
 
 

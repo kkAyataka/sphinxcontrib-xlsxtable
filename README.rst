@@ -120,6 +120,26 @@ Specifies start row.
       :start-row: 2
 
 
+CLI
+===
+
+You can use from CLI.
+
+.. code-block:: shell
+
+   $ python -m sphinxcontrib.xlsxtable --sheet=Sheet1 --header-rows=1 test/_res/sample.xlsx
+   +----+-------+-----------+--------+
+   | A1 | B1    | C1        | D1     |
+   +====+=======+===========+========+
+   | A2 | B2:B3 | C2        | D2     |
+   +----+       +-----------+--------+
+   | A3 |       | 日本語　○          |
+   +----+-------+-----------+--------+
+   | A4 | B4    | C4        | - D4-1 |
+   |    |       |           | - D4-2 |
+   +----+-------+-----------+--------+
+
+
 LICENSE
 =======
 

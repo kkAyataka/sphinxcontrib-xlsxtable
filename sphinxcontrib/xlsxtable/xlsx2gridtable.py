@@ -155,7 +155,7 @@ def draw_reST_grid_table(filename, header_rows, sheet, start_row):
     for l in lines:
         print(l)
 
-if __name__ == '__main__':
+def main():
     p = argparse.ArgumentParser(description='Grid Table String Generator')
     p.add_argument('--hrows', type=int, default=0, help='Header rows')
     p.add_argument('--sheet', type=str, help='Target sheet name')
@@ -165,3 +165,6 @@ if __name__ == '__main__':
     args = p.parse_args()
 
     draw_reST_grid_table(args.file, args.hrows, args.sheet, args.start_row)
+
+if __name__ == '__main__':
+    main()

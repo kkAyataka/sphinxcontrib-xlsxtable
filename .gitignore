@@ -1,4 +1,5 @@
 # VS Code
+.vscode/launch.json
 .vscode/settings.json
 
 # Python

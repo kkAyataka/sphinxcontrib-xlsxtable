@@ -157,14 +157,14 @@ def draw_reST_grid_table(filename, header_rows, sheet, start_row):
 
 def main():
     p = argparse.ArgumentParser(description='Grid Table String Generator')
-    p.add_argument('--hrows', type=int, default=0, help='Header rows')
+    p.add_argument('--header-rows', type=int, default=0, help='Header rows')
     p.add_argument('--sheet', type=str, help='Target sheet name')
     p.add_argument('--start-row', type=int, default=1, help='Start row')
     p.add_argument('file', type=str, help='Target Excel file path')
 
     args = p.parse_args()
 
-    draw_reST_grid_table(args.file, args.hrows, args.sheet, args.start_row)
+    draw_reST_grid_table(args.file, args.header_rows, args.sheet, args.start_row)
 
 if __name__ == '__main__':
     main()

@@ -9,6 +9,7 @@ from openpyxl.cell.cell import MergedCell
 
 from .xlsx2gridtable import gen_reST_grid_table_lines
 
+
 class XlsxTable(directives.tables.RSTTable):
     has_content = True
 
@@ -16,6 +17,7 @@ class XlsxTable(directives.tables.RSTTable):
     option_spec = {
         'file': directives.path,
         'header-rows': directives.positive_int,
+        'start-row': directives.positive_int,
         'sheet': directives.unchanged,
     }
 
@@ -23,11 +25,17 @@ class XlsxTable(directives.tables.RSTTable):
         filepath = self.options.get('file', '')
         header_rows = self.options.get('header-rows', 0)
         sheet = self.options.get('sheet', None)
+        start_row = self.options.get('start-row', 1)
 
         rst_dir = os.path.dirname(os.path.abspath(self.state.document.current_source))
         filepath = os.path.normpath(os.path.join(rst_dir, filepath))
 
-        lines = gen_reST_grid_table_lines(filepath, header_rows, sheet)
+        lines = gen_reST_grid_table_lines(
+            filepath,
+            header_rows,
+            sheet,
+            start_row
+            )
         node = nodes.Element(rawsource='\n'.join(lines))
 
         #for l in lines:

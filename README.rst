@@ -53,6 +53,73 @@ Rendered HTML:
 .. image:: https://raw.githubusercontent.com/kkAyataka/sphinxcontrib-xlsxtable/master/sample-rendering.png
 
 
+Options
+=======
+
+.. contents::
+   :local:
+
+
+Caption (optional)
+------------------
+
+Specifies table caption string.
+
+.. code-block:: rst
+
+   .. xlsx-table:: Table Caption
+      :file: path/to/xlsx/file.xlsx
+
+
+\:file: (required)
+------------------
+
+Specifies path to Excel file. You can use relative path.
+
+.. code-block:: rst
+
+   .. xlsx-table::
+      :file: path/to/xlsx/file.xlsx
+
+
+\:header-rows: (optional)
+-------------------------
+
+Specified the number of lines are used as header.
+
+.. code-block:: rst
+
+   .. xlsx-table::
+      :file: path/to/xlsx/file.xlsx
+      :header-rows: 1
+
+
+\:sheet: (optional)
+-------------------
+
+Generates a table from a sheet with the specified sheet name.
+
+If the options is not specified, active sheet is used.
+
+.. code-block:: rst
+
+   .. xlsx-table::
+      :file: path/to/xlsx/file.xlsx
+      :sheet: Sheet1
+
+
+\:start-row: (optional)
+-----------------------
+
+Specifies start row.
+
+.. code-block:: rst
+
+   .. xlsx-table::
+      :file: path/to/xlsx/file.xlsx
+      :start-row: 2
+
+
 LICENSE
 =======
 

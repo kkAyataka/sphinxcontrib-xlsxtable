@@ -99,7 +99,7 @@ Specified the number of lines are used as header.
 
 Generates a table from a sheet with the specified sheet name.
 
-If the options is not specified, active sheet is used.
+If this option is not specified, current active sheet is used.
 
 .. code-block:: rst
 

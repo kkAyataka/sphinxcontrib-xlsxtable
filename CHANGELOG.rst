@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.1.10 (2020-XX-XX)
+0.1.10 (2020-04-11)
 -------------------
 
 - Adjust for calling from CLI ( #14 )

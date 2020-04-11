@@ -55,7 +55,7 @@ def setup(app):
     app.add_directive("xlsx-table", XlsxTable)
 
     return {
-        'version': '0.1.9',
+        'version': '0.1.10',
         'parallel_read_safe': True,
         'parallel_write_safe': True,
     }

@@ -111,13 +111,25 @@ If this option is not specified, current active sheet is used.
 \:start-row: (optional)
 -----------------------
 
-Specifies start row.
+Specifies start row number.
 
 .. code-block:: rst
 
    .. xlsx-table::
       :file: path/to/xlsx/file.xlsx
       :start-row: 2
+
+
+\:start-column: (optional)
+-----------------------
+
+Specifies start column number.
+
+.. code-block:: rst
+
+   .. xlsx-table::
+      :file: path/to/xlsx/file.xlsx
+      :start-column: 2
 
 
 CLI
@@ -130,7 +142,7 @@ You can use from CLI.
    $ python -m sphinxcontrib.xlsxtable --sheet=Sheet1 --header-rows=1 test/_res/sample.xlsx
    +----+-------+-------+--------+
    | A1 | B1    | C1    | D1     |
-   +----+-------+-------+--------+
+   +====+=======+=======+========+
    | A2 | B2:B3 | C2    | D2     |
    +----+       +-------+--------+
    | A3 |       | C3:D3          |

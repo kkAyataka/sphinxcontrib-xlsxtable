@@ -30,12 +30,14 @@ Sample 3
 --------
 
 - Specifies start-row
+- Specifies start-column
 - Specifies header-rows
 
 .. xlsx-table:: Sample 3.1
    :file: _res/sample.xlsx
    :sheet: Sheet3
    :start-row: 2
+   :start-column: 2
 
 .. xlsx-table:: Sample 3.2
    :file: _res/sample.xlsx

@@ -18,6 +18,7 @@ class XlsxTable(directives.tables.RSTTable):
         'file': directives.path,
         'header-rows': directives.positive_int,
         'start-row': directives.positive_int,
+        'start-column': directives.positive_int,
         'sheet': directives.unchanged,
     }
 
@@ -26,6 +27,7 @@ class XlsxTable(directives.tables.RSTTable):
         header_rows = self.options.get('header-rows', 0)
         sheet = self.options.get('sheet', None)
         start_row = self.options.get('start-row', 1)
+        start_column = self.options.get('start-column', 1)
 
         rst_dir = os.path.dirname(os.path.abspath(self.state.document.current_source))
         filepath = os.path.normpath(os.path.join(rst_dir, filepath))
@@ -34,7 +36,8 @@ class XlsxTable(directives.tables.RSTTable):
             filepath,
             header_rows,
             sheet,
-            start_row
+            start_row,
+            start_column
             )
         node = nodes.Element(rawsource='\n'.join(lines))
 

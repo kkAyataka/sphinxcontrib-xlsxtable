@@ -1,11 +1,17 @@
 Changelog
 =========
 
+0.1.11 ()
+---------
+
+- Add ``start-column`` option
+
+
 0.1.10 (2020-04-11)
 -------------------
 
 - Adjust for calling from CLI ( #14 )
-- Implements ``start_row`` option ( #12 )
+- Add ``start-row`` option ( #12 )
 
 
 0.1.9 (2020-03-15)

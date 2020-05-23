@@ -41,9 +41,6 @@ class XlsxTable(directives.tables.RSTTable):
             )
         node = nodes.Element(rawsource='\n'.join(lines))
 
-        #for l in lines:
-        #    print(l)
-
         title, messages = self.make_title()
 
         self.content = ViewList(lines, self.content.source)

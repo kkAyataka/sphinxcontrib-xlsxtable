@@ -4,6 +4,51 @@ from openpyxl import Workbook
 from openpyxl import load_workbook
 from openpyxl.cell.cell import MergedCell
 
+def parse_index_str(index_str: str) -> int:
+    """ Gets index number form Excel column letter (1-based).
+        1 from A, 26 from Z and 52 from AZ.
+    """
+    AZ = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+    index_str = index_str.upper()
+    if index_str[0] in AZ:
+        index_str_len = len(index_str)
+        index = 0
+        for i in range(index_str_len):
+            index += (ord(index_str[i]) - ord('A') + 1) * pow(26, index_str_len - 1 - i)
+        return index
+    else:
+        return int(index_str)
+
+def parse_indexes_str(indexes_str: str) -> list:
+    """ Gets indexes numbers from string (1-based).
+        1, 2, 4 and 6 from '1-2, D-F'.
+    """
+    indexes = []
+    range_indexes_strs = indexes_str.replace(',', ' ').split()
+    for range_str in range_indexes_strs:
+        if '-' in range_str:
+            range_str_els = range_str.split('-')
+            begin = parse_index_str(range_str_els[0])
+            end = parse_index_str(range_str_els[1])
+            indexes += list(range(begin, end + 1))
+        else:
+            indexes.append(int(range_str))
+
+    return list(set(indexes))
+
+def get_use_indexes(min_index: int, max_index: int, includes_str: str, excludes_str: str):
+    """ Gets valid indexes (1-based).
+    """
+    includes = set(range(min_index, max_index + 1))
+    if includes_str is not None and len(includes_str) > 0:
+        includes = set(parse_indexes_str(includes_str))
+
+    excludes = set([])
+    if excludes_str is not None and len(excludes_str) > 0:
+        excludes = set(parse_indexes_str(excludes_str))
+
+    return list(includes - excludes)
 
 def get_string_width(text: str):
     width = 0

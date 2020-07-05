@@ -121,7 +121,7 @@ Specifies start row number.
 
 
 \:start-column: (optional)
------------------------
+--------------------------
 
 Specifies start column number.
 
@@ -130,6 +130,34 @@ Specifies start column number.
    .. xlsx-table::
       :file: path/to/xlsx/file.xlsx
       :start-column: 2
+
+
+\:include-rows: / :exclude-rows: (optional)
+-------------------------------------------
+
+Specifies include or exclude rows.
+Exclude setting has priority.
+
+.. code-block:: rst
+
+   .. xlsx-table::
+      :file: path/to/xlsx/file.xlsx
+      :include-rows: 1-2 4 8
+      :exclude-rows: 3 5-7
+
+
+\:include-columns: / :exclude-columns: (optional)
+-------------------------------------------------
+
+Specifies include or exclude columns.
+Exclude setting has priority.
+
+.. code-block:: rst
+
+   .. xlsx-table::
+      :file: path/to/xlsx/file.xlsx
+      :include-columns: A-B 4
+      :exclude-columns: C 5-6
 
 
 CLI

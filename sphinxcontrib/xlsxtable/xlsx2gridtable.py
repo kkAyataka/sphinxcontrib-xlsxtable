@@ -84,6 +84,13 @@ class TableCell:
         self.line_count = max(count_line(values), 1)
         self.width = get_max_width(values)
 
+def get_cell(table_cells: [[]], row: int, column: int):
+    for cols in table_cells:
+        for cell in cols:
+            if cell.row == row and cell.column == column:
+                return cell
+    return None
+
 def get_padding(count, max_count):
     padding = ''
     for _ in range(max_count - count):
@@ -173,14 +180,16 @@ def gen_reST_grid_table_lines(
 
     # adjust merged cell info
     for mrange in ws.merged_cell_ranges:
-        left = mrange.bounds[0] - 1
-        top = mrange.bounds[1] - 1
-        right = mrange.bounds[2] - 1
-        bottom = mrange.bounds[3] - 1
+        left = mrange.bounds[0]
+        top = mrange.bounds[1]
+        right = mrange.bounds[2]
+        bottom = mrange.bounds[3]
         for c in range(left, right + 1):
             for r in range(top, bottom + 1):
-                table_cells[r][c].is_merged_top = (r != top)
-                table_cells[r][c].is_merged_left = (c != left)
+                cell = get_cell(table_cells, r, c)
+                if cell is not None:
+                    cell.is_merged_top = (r != top)
+                    cell.is_merged_left = (c != left)
 
     # gen lines
     grid_table_lines = []

@@ -81,7 +81,7 @@ class TableCell:
         self.row = row
         self.column = column
         self.values = values
-        self.line_count = count_line(values)
+        self.line_count = max(count_line(values), 1)
         self.width = get_max_width(values)
 
 def get_padding(count, max_count):
@@ -184,8 +184,7 @@ def gen_reST_grid_table_lines(
 
     # gen lines
     grid_table_lines = []
-    for r in range(0, len(table_cells)):
-        cols = table_cells[r]
+    for r, cols in enumerate(table_cells):
         if r == header_rows and header_rows > 0:
             grid_table_lines.append(get_rule(cols, True))
         else:
@@ -194,8 +193,8 @@ def gen_reST_grid_table_lines(
         line_count = cols[0].line_count
         for l in range(line_count):
             line_str = ''
-            for cell in cols:
-                line_str += '| ' if cell.is_merged_left == False else '  '
+            for c, cell in enumerate(cols):
+                line_str += '| ' if c == 0 or cell.is_merged_left == False else '  '
                 if len(cell.values) > l:
                     line_str += f'{cell.values[l]}'
                     line_str += get_padding(get_string_width(cell.values[l]), cell.width)

@@ -133,22 +133,22 @@ def gen_reST_grid_table_lines(
         ws = wb.active
 
     # rows / columns
-    offset_row = max(ws.min_row, start_row) - 1
-    offset_col = max(ws.min_column, start_column) - 1
+    offset_row = max(ws.min_row, start_row)
+    offset_col = max(ws.min_column, start_column)
 
     use_rows = get_use_indexes(ws.min_row, ws.max_row, include_rows, exclude_rows)
     use_cols = get_use_indexes(ws.min_column, ws.max_column, include_columns, exclude_columns)
 
     # parse cell info
     table_cells = []
-    for r in range(1, ws.max_row + 1):
+    for r in range(offset_row, ws.max_row + 1):
         if r in use_rows:
             # appebd array for row
             table_cells.append([])
 
             # get line count in the row
             r_index = len(table_cells) - 1
-            for c  in range(1, ws.max_column + 1):
+            for c  in range(offset_col, ws.max_column + 1):
                 if c in use_cols:
                     tc = TableCell(r, c, ws.cell(r, c).value)
                     table_cells[r_index].append(tc)
@@ -186,9 +186,9 @@ def gen_reST_grid_table_lines(
 
     # gen lines
     grid_table_lines = []
-    for r in range(offset_row, ws.max_row):
-        cols = table_cells[r][offset_col:]
-        if r == (offset_row + header_rows) and header_rows > 0:
+    for r in range(0, len(table_cells)):
+        cols = table_cells[r]
+        if r == header_rows and header_rows > 0:
             grid_table_lines.append(get_rule(cols, True))
         else:
             grid_table_lines.append(get_rule(cols))

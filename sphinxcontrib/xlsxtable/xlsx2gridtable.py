@@ -8,10 +8,8 @@ def parse_index_str(index_str: str) -> int:
     """ Gets index number form Excel column letter (1-based).
         1 from A, 26 from Z and 52 from AZ.
     """
-    AZ = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-
     index_str = index_str.upper()
-    if index_str[0] in AZ:
+    if index_str[0] in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ':
         index_str_len = len(index_str)
         index = 0
         for i in range(index_str_len):
@@ -33,7 +31,7 @@ def parse_indexes_str(indexes_str: str) -> list:
             end = parse_index_str(range_str_els[1])
             indexes += list(range(begin, end + 1))
         else:
-            indexes.append(int(range_str))
+            indexes.append(parse_index_str(range_str))
 
     return list(set(indexes))
 

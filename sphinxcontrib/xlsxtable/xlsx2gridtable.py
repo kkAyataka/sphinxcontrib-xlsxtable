@@ -107,7 +107,17 @@ def get_rule(colmuns, is_head=False, is_end=False):
     line_str += '+'
     return line_str
 
-def gen_reST_grid_table_lines(filename, header_rows=0, sheetname=None, start_row=1, start_column=1):
+def gen_reST_grid_table_lines(
+    filename: str,
+    header_rows=0,
+    sheetname=None,
+    start_row=1,
+    start_column=1,
+    include_rows=None,
+    exclude_rows=None,
+    include_columns=None,
+    exclude_columns=None):
+
     wb = load_workbook(
         filename=filename,
         read_only=False, # Can not get merged cell information if read_only is True
@@ -126,16 +136,22 @@ def gen_reST_grid_table_lines(filename, header_rows=0, sheetname=None, start_row
     offset_row = max(ws.min_row, start_row) - 1
     offset_col = max(ws.min_column, start_column) - 1
 
+    use_rows = get_use_indexes(ws.min_row, ws.max_row, include_rows, exclude_rows)
+    use_cols = get_use_indexes(ws.min_column, ws.max_column, include_columns, exclude_columns)
+
     # parse cell info
     table_cells = []
     for r in range(1, ws.max_row + 1):
-        # appebd array for row
-        table_cells.append([])
+        if r in use_rows:
+            # appebd array for row
+            table_cells.append([])
 
-        # get line count in the row
-        for c  in range(1, ws.max_column + 1):
-            tc = TableCell(r, c, ws.cell(r, c).value)
-            table_cells[r - 1].append(tc)
+            # get line count in the row
+            r_index = len(table_cells) - 1
+            for c  in range(1, ws.max_column + 1):
+                if c in use_cols:
+                    tc = TableCell(r, c, ws.cell(r, c).value)
+                    table_cells[r_index].append(tc)
 
     # adjust line count
     row_count = len(table_cells)
@@ -196,8 +212,12 @@ def gen_reST_grid_table_lines(filename, header_rows=0, sheetname=None, start_row
     grid_table_lines.append(get_rule(cols, is_end=True))
     return grid_table_lines
 
-def draw_reST_grid_table(filename, header_rows, sheet, start_row, start_column):
-    lines = gen_reST_grid_table_lines(filename, header_rows, sheet, start_row, start_column)
+def draw_reST_grid_table(
+        filename, header_rows, sheet, start_row, start_column,
+        include_rows, exclude_rows,
+        include_columns, exclude_columns):
+    lines = gen_reST_grid_table_lines(filename, header_rows, sheet, start_row, start_column,
+        include_rows, exclude_rows, include_columns, exclude_columns)
     for l in lines:
         print(l)
 
@@ -207,11 +227,18 @@ def main():
     p.add_argument('--sheet', type=str, help='Target sheet name')
     p.add_argument('--start-row', type=int, default=1, help='Start row')
     p.add_argument('--start-column', type=int, default=1, help='Start colmun')
+    p.add_argument('--include-rows', type=str, default=None, help='Specify included rows')
+    p.add_argument('--exclude-rows', type=str, default=None, help='Specify excluded rows')
+    p.add_argument('--include-columns', type=str, default=None, help='Specify included columns')
+    p.add_argument('--exclude-columns', type=str, default=None, help='Specify excluded columns')
     p.add_argument('file', type=str, help='Target Excel file path')
 
     args = p.parse_args()
 
-    draw_reST_grid_table(args.file, args.header_rows, args.sheet, args.start_row, args.start_column)
+    draw_reST_grid_table(args.file, args.header_rows, args.sheet,
+        args.start_row, args.start_column,
+        args.include_rows, args.exclude_rows,
+        args.include_columns, args.exclude_columns)
 
 if __name__ == '__main__':
     main()

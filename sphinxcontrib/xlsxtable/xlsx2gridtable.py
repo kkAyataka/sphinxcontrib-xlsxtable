@@ -97,12 +97,17 @@ def get_padding(count, max_count):
         padding += ' '
     return padding
 
-def get_rule(colmuns, is_head=False, is_end=False):
+def get_rule(colmuns, is_head=False, is_end=False, is_top=False):
     line_str = ''
-    for cell in colmuns:
+    for c, cell in enumerate(colmuns):
+        if c != 0 and cell.is_merged_left and cell.is_merged_top:
+            line_str += ' '
+        else:
         line_str += '+'
         for _ in range(cell.width + 2):
-            if cell.is_merged_top and not is_end:
+            if is_top:
+                line_str += '-'
+            elif cell.is_merged_top and not is_end:
                 line_str += ' '
             elif is_head:
                 line_str += '='
@@ -194,8 +199,10 @@ def gen_reST_grid_table_lines(
     # gen lines
     grid_table_lines = []
     for r, cols in enumerate(table_cells):
-        if r == header_rows and header_rows > 0:
-            grid_table_lines.append(get_rule(cols, True))
+        if r == 0:
+            grid_table_lines.append(get_rule(cols, is_top=True))
+        elif r == header_rows:
+            grid_table_lines.append(get_rule(cols, is_head=True))
         else:
             grid_table_lines.append(get_rule(cols))
 

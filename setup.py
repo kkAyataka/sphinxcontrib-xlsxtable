@@ -39,4 +39,5 @@ setup(
         'openpyxl >= 3.0.0',
     ],
     namespace_packages=['sphinxcontrib'],
+    test_suite='test',
 )

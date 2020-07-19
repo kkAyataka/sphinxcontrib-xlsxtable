@@ -44,3 +44,28 @@ Sample 3
    :sheet: Sheet3
    :start-row: 4
    :header-rows: 2
+
+
+Sample 4
+--------
+
+- Specifies start-row
+- Specifies include-rows
+- Specifies exclude-rows
+- Specifies include-columns
+- Specifies exclude-columns
+
+.. xlsx-table:: Sample 4.1
+   :file: _res/sample.xlsx
+   :sheet: Sheet4
+   :include-rows: 2-6
+   :exclude-rows: 1-2 4-100
+   :include-columns: B-C
+   :exclude-columns: A B D
+
+.. xlsx-table:: Sample 4.2
+   :file: _res/sample.xlsx
+   :sheet: Sheet4
+   :header-rows: 1
+   :exclude-rows: 1-2
+   :exclude-columns: A

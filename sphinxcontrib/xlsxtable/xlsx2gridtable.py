@@ -103,7 +103,7 @@ def get_rule(colmuns, is_head=False, is_end=False, is_top=False):
         if c != 0 and cell.is_merged_left and cell.is_merged_top:
             line_str += ' '
         else:
-        line_str += '+'
+            line_str += '+'
         for _ in range(cell.width + 2):
             if is_top:
                 line_str += '-'

@@ -184,7 +184,7 @@ def gen_reST_grid_table_lines(
             table_cells[r][c].width = max_width
 
     # adjust merged cell info
-    for mrange in ws.merged_cell_ranges:
+    for mrange in ws.merged_cells.ranges:
         left = mrange.bounds[0]
         top = mrange.bounds[1]
         right = mrange.bounds[2]

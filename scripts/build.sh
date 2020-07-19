@@ -16,7 +16,7 @@ if [ -d ./dist ]; then
   rm -r ./dist
 fi
 
-if [ -d ./${PROJ_NAME}.egg-info]; then
+if [ -d ./${PROJ_NAME}.egg-info ]; then
   rm -r ./${PROJ_NAME}.egg-info
 fi
 

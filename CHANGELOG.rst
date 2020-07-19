@@ -1,10 +1,12 @@
 Changelog
 =========
 
-0.1.11 ()
----------
+1.0.0 (2020-07-19)
+------------------
 
 - Add ``start-column`` option
+- Add ``include-rows`` and ``exclude-rows`` optionals
+- Add ``include-columns`` and ``exclude-columns`` optional
 
 
 0.1.10 (2020-04-11)

@@ -231,8 +231,10 @@ def draw_reST_grid_table(
         include_columns, exclude_columns):
     lines = gen_reST_grid_table_lines(filename, header_rows, sheet, start_row, start_column,
         include_rows, exclude_rows, include_columns, exclude_columns)
-    for l in lines:
-        print(l)
+
+    text ='\n'.join(lines)
+    print(text)
+    return text
 
 def main():
     p = argparse.ArgumentParser(description='Grid Table String Generator')

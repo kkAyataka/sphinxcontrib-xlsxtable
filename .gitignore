@@ -4,6 +4,7 @@
 
 # Python
 .venv
+.eggs
 __pycache__
 
 # PyPI

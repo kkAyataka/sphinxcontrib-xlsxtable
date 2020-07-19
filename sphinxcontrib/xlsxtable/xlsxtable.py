@@ -19,6 +19,10 @@ class XlsxTable(directives.tables.RSTTable):
         'header-rows': directives.positive_int,
         'start-row': directives.positive_int,
         'start-column': directives.positive_int,
+        'include-rows': directives.unchanged,
+        'exclude-rows': directives.unchanged,
+        'include-columns': directives.unchanged,
+        'exclude-columns': directives.unchanged,
         'sheet': directives.unchanged,
     }
 
@@ -28,6 +32,10 @@ class XlsxTable(directives.tables.RSTTable):
         sheet = self.options.get('sheet', None)
         start_row = self.options.get('start-row', 1)
         start_column = self.options.get('start-column', 1)
+        include_rows = self.options.get('include-rows', None)
+        exclude_rows = self.options.get('exclude-rows', None)
+        include_columns = self.options.get('include-columns', None)
+        exclude_columns = self.options.get('exclude-columns', None)
 
         rst_dir = os.path.dirname(os.path.abspath(self.state.document.current_source))
         filepath = os.path.normpath(os.path.join(rst_dir, filepath))
@@ -37,8 +45,9 @@ class XlsxTable(directives.tables.RSTTable):
             header_rows,
             sheet,
             start_row,
-            start_column
-            )
+            start_column,
+            include_rows, exclude_rows,
+            include_columns, exclude_columns)
         node = nodes.Element(rawsource='\n'.join(lines))
 
         title, messages = self.make_title()

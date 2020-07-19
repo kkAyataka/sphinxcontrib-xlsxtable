@@ -24,7 +24,7 @@ copyright = '2020, kkAyataka'
 author = 'kkAyataka'
 
 # The full version, including alpha/beta/rc tags
-release = '0.1.10'
+release = '1.0.0'
 
 
 # -- General configuration ---------------------------------------------------

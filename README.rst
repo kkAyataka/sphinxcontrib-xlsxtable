@@ -180,6 +180,14 @@ You can use from CLI.
    +----+-------+-------+--------+
 
 
+Links
+=====
+
+- `sphinxcontrib-xlsxtableの解説 <https://kkayataka.hatenablog.com/entry/2020/03/14/140305>`__
+- `sphinxcontrib-xlsxtableのモジュール実行 <https://kkayataka.hatenablog.com/entry/2020/04/11/173717>`__
+- `sphinxcontrib-xlsxtableに行・列指定オプションを追加 <https://kkayataka.hatenablog.com/entry/2020/07/25/131440>`__
+
+
 LICENSE
 =======
 

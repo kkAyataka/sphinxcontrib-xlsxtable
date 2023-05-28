@@ -1,8 +1,6 @@
 import argparse
 import unicodedata
-from openpyxl import Workbook
 from openpyxl import load_workbook
-from openpyxl.cell.cell import MergedCell
 
 def parse_index_str(index_str: str) -> int:
     """ Gets index number form Excel column letter (1-based).
@@ -84,7 +82,7 @@ class TableCell:
         self.line_count = max(count_line(values), 1)
         self.width = get_max_width(values)
 
-def get_cell(table_cells: [[]], row: int, column: int):
+def get_cell(table_cells: list[list], row: int, column: int):
     for cols in table_cells:
         for cell in cols:
             if cell.row == row and cell.column == column:

@@ -3,12 +3,7 @@ from docutils import nodes
 from docutils.parsers.rst import directives
 from docutils.statemachine import ViewList
 
-from openpyxl import Workbook
-from openpyxl import load_workbook
-from openpyxl.cell.cell import MergedCell
-
-from .xlsx2gridtable import gen_reST_grid_table_lines
-
+from xlsxtable.xlsx2gridtable import gen_reST_grid_table_lines
 
 class XlsxTable(directives.tables.RSTTable):
     has_content = True

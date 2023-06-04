@@ -114,10 +114,10 @@ class TwoCellAnchor:
         self.from_pt = from_pt
         self.to_pt = to_pt
         self.title = title
+        self.cx = cx
+        self.cy = cy
         self.embed = embed
         self.image_path = image_path
-        self.cy = cy
-        self.cx = cx
 
     def __str__(self) -> str:
         return f'from:{self.from_pt.col},{self.from_pt.row}, to:{self.to_pt.col},{self.to_pt.row}, embed:{self.embed}'

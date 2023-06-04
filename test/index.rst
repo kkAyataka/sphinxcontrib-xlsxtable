@@ -69,3 +69,18 @@ Sample 4
    :header-rows: 1
    :exclude-rows: 1-2
    :exclude-columns: A
+
+Sample 5
+--------
+
+- Includes images
+
+.. xlsx-table:: Sample 5.1
+   :file: _res/sample-images.xlsx
+   :sheet: v
+
+.. xlsx-table:: Sample 5.2
+   :file: _res/sample-images.xlsx
+   :sheet: h
+   :start-row: 1
+   :start-column: 1

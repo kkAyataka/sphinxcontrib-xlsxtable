@@ -26,7 +26,8 @@ class TestGenGridTable(unittest.TestCase):
     def test_gen_normal(self):
         xlsxfile = os.path.abspath(f'{os.path.dirname(__file__)}/_res/sample.xlsx')
         res = xlsx2gridtable.gen_reST_grid_table_lines(
-            filename=xlsxfile,
+            file='./_res/sample.xlsx',
+            fullpath=xlsxfile,
             header_rows=0,
             sheetname='Sheet4',
             start_row=0,
@@ -60,7 +61,8 @@ class TestGenGridTable(unittest.TestCase):
     def test_head_start_row_start_column(self):
         xlsxfile = os.path.abspath(f'{os.path.dirname(__file__)}/_res/sample.xlsx')
         res = xlsx2gridtable.gen_reST_grid_table_lines(
-            filename=xlsxfile,
+            file='./_res/sample.xlsx',
+            fullpath=xlsxfile,
             header_rows=1,
             sheetname='Sheet4',
             start_row=4,
@@ -88,7 +90,8 @@ class TestGenGridTable(unittest.TestCase):
     def test_include_rows_exclude_rows_include_columns_exclude_columns(self):
         xlsxfile = os.path.abspath(f'{os.path.dirname(__file__)}/_res/sample.xlsx')
         res = xlsx2gridtable.gen_reST_grid_table_lines(
-            filename=xlsxfile,
+            file='./_res/sample.xlsx',
+            fullpath=xlsxfile,
             header_rows=0,
             sheetname='Sheet4',
             start_row=0,
@@ -110,7 +113,8 @@ class TestGenGridTable(unittest.TestCase):
     def test_divide_merged_cell(self):
         xlsxfile = os.path.abspath(f'{os.path.dirname(__file__)}/_res/sample.xlsx')
         res = xlsx2gridtable.gen_reST_grid_table_lines(
-            filename=xlsxfile,
+            file='./_res/sample.xlsx',
+            fullpath=xlsxfile,
             header_rows=1,
             sheetname='Sheet4',
             start_row=0,
@@ -133,6 +137,33 @@ class TestGenGridTable(unittest.TestCase):
             +----+----+----+
             | B7 | C7 | D7 |
             +----+----+----+
+            ''')
+
+        self.assertListEqual(res, ok)
+
+    def test_images(self):
+        xlsxfile = os.path.abspath(f'{os.path.dirname(__file__)}/_res/sample-images.xlsx')
+        res = xlsx2gridtable.gen_reST_grid_table_lines(
+            file='./_res/sample-images.xlsx',
+            fullpath=xlsxfile,
+            header_rows=0,
+            sheetname='v',
+            start_row=0,
+            start_column=0,
+            include_rows=None,
+            exclude_rows=None,
+            include_columns=None,
+            exclude_columns=None
+            )
+
+        ok = gen_ok_text('''
+            +-------+-------------------------------------------------------+
+            | Red   | .. image:: ./_res/sample-images.xlsx.media/image1.png |
+            +-------+-------------------------------------------------------+
+            | Green | .. image:: ./_res/sample-images.xlsx.media/image2.png |
+            +-------+-------------------------------------------------------+
+            | Blue  | .. image:: ./_res/sample-images.xlsx.media/image3.png |
+            +-------+-------------------------------------------------------+
             ''')
 
         self.assertListEqual(res, ok)

@@ -153,11 +153,11 @@ def gen_reST_grid_table_lines(
 
     # Parse for images
     img_wb = ImageWorkbook.parse(fullpath)
-    img_ws = img_wb.get_sheet(ws.title)
-    img_min_from_row = img_ws.drawing.min_from_row + 1 if img_ws.drawing != None else 1048576
-    img_max_from_row = img_ws.drawing.max_from_row + 1 if img_ws.drawing != None else 1
-    img_min_from_col = img_ws.drawing.min_from_col + 1 if img_ws.drawing != None else 16384
-    img_max_from_col = img_ws.drawing.max_from_col + 1 if img_ws.drawing != None else 1
+    img_ws = img_wb.get_sheet(ws.title) if img_wb != None else None
+    img_min_from_row = img_ws.drawing.min_from_row + 1 if img_ws != None and img_ws.drawing != None else 1048576
+    img_max_from_row = img_ws.drawing.max_from_row + 1 if img_ws != None and img_ws.drawing != None else 1
+    img_min_from_col = img_ws.drawing.min_from_col + 1 if img_ws != None and img_ws.drawing != None else 16384
+    img_max_from_col = img_ws.drawing.max_from_col + 1 if img_ws != None and img_ws.drawing != None else 1
 
     # rows / columns
     min_row = min(ws.min_row, img_min_from_row)
@@ -185,7 +185,7 @@ def gen_reST_grid_table_lines(
                     table_cells[r_index].append(tc)
 
     # Handles images, embeds image directive
-    if img_ws.drawing != None:
+    if img_ws != None and img_ws.drawing != None:
         # Make images directory from xlsx file
         base_dir = os.path.dirname(fullpath)
         dir_name = os.path.basename(fullpath) + '.media'

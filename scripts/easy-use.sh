@@ -46,4 +46,9 @@ fi
 # Run test
 cd ../
 python setup.py test
-echo -e "\033[0;32m========== Test: End ==========\033[0m"
+if [[ $? != 0 ]]; then
+    echo -e "\033[31m========== Test: Error ==========\033[0m"
+    exit 1
+else
+    echo -e "\033[0;32m========== Test: OK ==========\033[0m"
+fi

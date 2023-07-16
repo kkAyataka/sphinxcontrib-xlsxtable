@@ -8,7 +8,7 @@ with open("README.rst", "r") as fh:
 
 setup(
     name='sphinxcontrib-xlsxtable',
-    version='1.0.0',
+    version='1.1.0',
     url='https://github.com/kkAyataka/sphinxcontrib-xlsxtable',
     download_url='http://pypi.python.org/pypi/sphinxcontrib-xlsxtable',
     license='MIT',

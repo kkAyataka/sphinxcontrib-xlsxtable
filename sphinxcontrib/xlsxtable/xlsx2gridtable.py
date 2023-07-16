@@ -152,8 +152,13 @@ def gen_reST_grid_table_lines(
         ws = wb.active
 
     # Parse for images
-    img_wb = ImageWorkbook.parse(fullpath)
-    img_ws = img_wb.get_sheet(ws.title) if img_wb != None else None
+    img_wb = None
+    img_ws = None
+    try:
+        img_wb = ImageWorkbook.parse(fullpath)
+        img_ws = img_wb.get_sheet(ws.title)
+    except:
+        pass
     img_min_from_row = img_ws.drawing.min_from_row + 1 if img_ws != None and img_ws.drawing != None else 1048576
     img_max_from_row = img_ws.drawing.max_from_row + 1 if img_ws != None and img_ws.drawing != None else 1
     img_min_from_col = img_ws.drawing.min_from_col + 1 if img_ws != None and img_ws.drawing != None else 16384

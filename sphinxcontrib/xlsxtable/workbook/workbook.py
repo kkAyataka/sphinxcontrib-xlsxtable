@@ -44,7 +44,7 @@ class Relationships:
                 items.append(Relationship.from_xml(r))
             return Relationships(items)
         except:
-            return None
+            return Relationships([])
 
     def __init__(self, items: list[Relationship]):
         self.items = items

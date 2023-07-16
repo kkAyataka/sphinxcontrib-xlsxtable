@@ -9,6 +9,7 @@ A sphinx extension for making table from Excel file.
   - Supports xlsx file
 
 - Supports merged cell
+- Supports images
 - Supports Japanese
 
 This extension **generates a grid table string internally** from Excel file.

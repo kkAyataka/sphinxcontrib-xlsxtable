@@ -22,7 +22,7 @@ class XlsxTable(directives.tables.RSTTable):
     }
 
     def run(self):
-        filepath = self.options.get('file', '')
+        file = self.options.get('file', '')
         header_rows = self.options.get('header-rows', 0)
         sheet = self.options.get('sheet', None)
         start_row = self.options.get('start-row', 1)
@@ -33,10 +33,11 @@ class XlsxTable(directives.tables.RSTTable):
         exclude_columns = self.options.get('exclude-columns', None)
 
         rst_dir = os.path.dirname(os.path.abspath(self.state.document.current_source))
-        filepath = os.path.normpath(os.path.join(rst_dir, filepath))
+        fullpath = os.path.normpath(os.path.join(rst_dir, file))
 
         lines = gen_reST_grid_table_lines(
-            filepath,
+            file,
+            fullpath,
             header_rows,
             sheet,
             start_row,

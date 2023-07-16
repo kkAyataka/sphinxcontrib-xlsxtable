@@ -8,6 +8,8 @@ echo ""
 if [[ $? != 0 ]]; then
     echo "build error" >&2
     exit 1
+else
+    echo -e "\033[0;32m========== Build: OK ==========\033[0m"
 fi
 
 # Install
@@ -16,6 +18,8 @@ pip install --no-deps --force-reinstall ../dist/sphinxcontrib_xlsxtable-1.0.0-py
 if [[ $? != 0 ]]; then
     echo "pip install error" >&2
     exit 1
+else
+    echo -e "\033[0;32m========== Install: OK ==========\033[0m"
 fi
 
 # Run Sphinx"
@@ -25,6 +29,8 @@ make -C ../test html
 if [[ $? != 0 ]]; then
     echo "make error" >&2
     exit 1
+else
+    echo -e "\033[0;32m========== Sphinx: OK ==========\033[0m"
 fi
 
 # RUn cli
@@ -33,4 +39,11 @@ python -m sphinxcontrib.xlsxtable --sheet=Sheet1 --header-rows=1 ../test/_res/sa
 if [[ $? != 0 ]]; then
     echo "cli error" >&2
     exit 1
+else
+    echo -e "\033[0;32m========== CLI: OK ==========\033[0m"
 fi
+
+# Run test
+cd ../
+python setup.py test
+echo -e "\033[0;32m========== Test: End ==========\033[0m"

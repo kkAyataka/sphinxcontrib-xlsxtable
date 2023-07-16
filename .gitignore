@@ -11,7 +11,7 @@
 __pycache__
 
 # PyPI
-scripts/pypi-env.sh
+scripts/env
 build
 dist
 sphinxcontrib_xlsxtable.egg-info

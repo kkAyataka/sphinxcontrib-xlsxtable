@@ -14,7 +14,7 @@ fi
 
 # Install
 echo ""
-pip install --no-deps --force-reinstall ../dist/sphinxcontrib_xlsxtable-1.1.0-py3-none-any.whl
+pip install --no-deps --force-reinstall ../dist/sphinxcontrib_xlsxtable-1.1.1-py3-none-any.whl
 if [[ $? != 0 ]]; then
     echo "pip install error" >&2
     exit 1

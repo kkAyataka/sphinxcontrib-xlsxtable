@@ -88,7 +88,7 @@ class TableCell:
 
     def set_value(self, value: str):
         values = []
-        if value != None:
+        if value is not None:
             values = f"{value}".split("\n")
 
         self.values = values
@@ -174,22 +174,22 @@ def gen_reST_grid_table_lines(
         pass
     img_min_from_row = (
         img_ws.drawing.min_from_row + 1
-        if img_ws != None and img_ws.drawing != None
+        if img_ws is not None and img_ws.drawing is not None
         else 1048576
     )
     img_max_from_row = (
         img_ws.drawing.max_from_row + 1
-        if img_ws != None and img_ws.drawing != None
+        if img_ws is not None and img_ws.drawing is not None
         else 1
     )
     img_min_from_col = (
         img_ws.drawing.min_from_col + 1
-        if img_ws != None and img_ws.drawing != None
+        if img_ws is not None and img_ws.drawing is not None
         else 16384
     )
     img_max_from_col = (
         img_ws.drawing.max_from_col + 1
-        if img_ws != None and img_ws.drawing != None
+        if img_ws is not None and img_ws.drawing is not None
         else 1
     )
 
@@ -219,12 +219,12 @@ def gen_reST_grid_table_lines(
                     table_cells[r_index].append(tc)
 
     # Handles images, embeds image directive
-    if img_ws != None and img_ws.drawing != None:
+    if img_ws is not None and img_ws.drawing is not None:
         # Make images directory from xlsx file
         base_dir = os.path.dirname(fullpath)
         dir_name = os.path.basename(fullpath) + ".media"
         img_dir = os.path.join(base_dir, dir_name)
-        if os.path.exists(img_dir) == False:
+        if os.path.exists(img_dir) is False:
             os.mkdir(img_dir)
         # Write out image files
         for m in img_wb.media:
@@ -286,7 +286,7 @@ def gen_reST_grid_table_lines(
         for l in range(line_count):
             line_str = ""
             for c, cell in enumerate(cols):
-                line_str += "| " if c == 0 or cell.is_merged_left == False else "  "
+                line_str += "| " if c == 0 or cell.is_merged_left is False else "  "
                 if len(cell.values) > l:
                     line_str += f"{cell.values[l]}"
                     line_str += get_padding(

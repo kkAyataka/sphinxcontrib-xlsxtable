@@ -165,7 +165,7 @@ class SpreadsheetDrawing:
             anchor = TwoCellAnchor.from_xml(anchor_el, drawing_xml_rels, path)
             items.append(anchor)
 
-            if is_first == True:
+            if is_first is True:
                 min_from_row = anchor.from_pt.row
                 max_from_row = anchor.from_pt.row
                 min_from_col = anchor.from_pt.col
@@ -216,12 +216,12 @@ class Sheet:
         sheet_xml_el = ElementTree.fromstring(sheet_xml_str)
         drawing_el = sheet_xml_el.find(".//drawing", ns)
         drawing = None
-        if drawing_el != None:
+        if drawing_el is not None:
             rid = drawing_el.get(
                 "{http://schemas.openxmlformats.org/officeDocument/2006/relationships}id"
             )
             rel = sheet_xml_rels.get(rid)
-            if rel != None:
+            if rel is not None:
                 drawing_path = os.path.normpath(os.path.join(dir_path, rel.target))
                 drawing = SpreadsheetDrawing.from_archive(xlsx, drawing_path)
 
@@ -264,7 +264,7 @@ class Workbook:
         # load images
         media = {}
         for sheet in sheets:
-            if sheet.drawing != None:
+            if sheet.drawing is not None:
                 for anchor in sheet.drawing.two_cell_anchors:
                     fs = xlsx.open(anchor.image_path)
                     if fs.readable():

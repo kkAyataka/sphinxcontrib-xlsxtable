@@ -1,6 +1,6 @@
 try:
     from . import xlsxtable
-except:
+except ModuleNotFoundError:
     if __name__ != 'sphinxcontrib.xlsxtable':
         raise
 

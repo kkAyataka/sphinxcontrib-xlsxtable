@@ -148,7 +148,7 @@ def gen_reST_grid_table_lines(
     # select target sheet
     try:
         ws = wb[sheetname]
-    except:
+    except KeyError:
         ws = wb.active
 
     # Parse for images
